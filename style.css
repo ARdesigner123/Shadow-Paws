@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#canvas1 {
+    border: 5px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    font-family: 'Creepster', cursive;
+}
+
+.audio-control {
+    width: 50px;
+    height: 50px;
+    transform: translate(2170%, 220%);
+    cursor: pointer;
+    opacity: 80%;
+}
+
+#retry-button {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+#retry-button:hover {
+    opacity: 0.8; /* Slightly fade when hovered */
+}
+
+#player, #layer1, #layer2, #layer3, #layer4, #layer5, #enemy_fly, #enemy_plant, #enemy_spider_big, #fire, #collisionAnimation, #lives {
+    display: none;
+}

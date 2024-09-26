@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compactible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="canvas1"></canvas>
+
+    <img id="player" src="assets/player.png">
+    <img id="layer1" src="assets/layer-1.png">
+    <img id="layer2" src="assets/layer-2.png">
+    <img id="layer3" src="assets/layer-3.png">
+    <img id="layer4" src="assets/layer-4.png">
+    <img id="layer5" src="assets/layer-5.png">
+    <img id="enemy_fly" src="assets/enemy_fly.png">
+    <img id="enemy_plant" src="assets/enemy_plant.png">
+    <img id="enemy_spider_big" src="assets/enemy_spider_big.png">
+    <img id="fire" src="assets/fire.png">
+    <img id="collisionAnimation" src="assets/boom.png">
+    <img id="lives" src="assets/lives.png">
+
+    <!-- Audio element -->
+    <audio id="background-music" src="music/Background Music.mp3" loop></audio>
+
+    <audio id="victory-sound" src="music/victory-sound.mp3"></audio>
+
+    <audio id="defeat-sound" src="music/defeat-sound.mp3"></audio>
+
+    <audio id="fire-sound" src="soundefx/fire.mp3"></audio>
+    <audio id="stomp-sound" src="soundefx/stomp.mp3"></audio>
+    <audio id="jump-sound" src="soundefx/jump.mp3"></audio>
+    
+    <!-- Retry Page -->
+    <img id="retry-button" src="assets/retry.png" alt="Try Again" style="display:none; cursor: pointer;">
+
+   <!-- Play and Pause images -->
+   <img id="play-btn" class="audio-control" src="assets/play-icon.png" alt="Play Music">
+   <img id="pause-btn" class="audio-control" src="assets/pause-icon.png" alt="Pause Music">
+
+   <script>
+    // Function to start music when user interacts with the page
+    function startMusic() {
+      var backgroundMusic = document.getElementById("background-music");
+      
+      // Try to play the music
+      var playPromise = backgroundMusic.play();
+
+      // Check if the browser allows the music to play
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // Remove event listeners once the music starts playing
+          document.removeEventListener("mousemove", startMusic);
+          document.removeEventListener("keydown", startMusic);
+        }).catch(error => {
+          console.error("Error in playing background music: ", error);
+        });
+      }
+    }
+
+    // Add event listeners for mouse movement and key presses
+    document.addEventListener("mousemove", startMusic);
+    document.addEventListener("keydown", startMusic);
+
+    // Play image functionality
+    document.getElementById("play-btn").addEventListener("click", function() {
+      document.getElementById("background-music").play();
+    });
+
+    // Pause image functionality
+    document.getElementById("pause-btn").addEventListener("click", function() {
+      document.getElementById("background-music").pause();
+    });
+  </script>
+
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
